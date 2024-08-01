@@ -1,0 +1,12 @@
+.inputDesign {
+    height: 3em;
+    width: 18em;
+    border: 0.15em solid black;
+    border-radius: 0.2em;
+    margin: 1em;
+    display: flex;
+}
+
+.inputDesignError {
+    border: 0.15em solid rgb(255, 0, 0);
+}

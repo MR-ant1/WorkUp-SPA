@@ -1,0 +1,20 @@
+import "./LoginInput.css"
+
+// eslint-disable-next-line react/prop-types
+export const LoginInput = ({ className, type, name, placeholder, disabled, value, onClick, changeFunction, blurFunction }) => {
+
+    return (
+
+        <input
+            className={className}
+            type={type}
+            name={name}
+            placeholder={placeholder}
+            disabled={disabled}
+            value={value}
+            onClick={onClick}
+            onChange={(e) => changeFunction(e)}
+            onBlur={(e) => blurFunction(e)}
+        />
+    )
+}

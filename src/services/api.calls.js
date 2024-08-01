@@ -1,9 +1,9 @@
 
 import { logout } from "../app/Slices/userSlice";
 
-const root = "http://localhost:4001/api/"
+const root = "http://localhost:8000/api/"
 
-export const loginCall = async (user) => {
+export const loginUser = async (user) => {
 
     const clientData = {
       method: "POST",
@@ -31,3 +31,27 @@ export const loginCall = async (user) => {
       return error;
     }
   };
+
+  export const GetProjects = async () => {
+
+    const clientData = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }
+
+    try {
+        const response = await fetch(`${root}userProject`, clientData)
+
+        const data = await response.json();
+        if (!data.success) {
+            throw new Error(data.message)
+        }
+
+        return data
+
+    } catch (error) {
+        return error
+    }
+}
