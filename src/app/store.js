@@ -17,7 +17,7 @@ const persistConfig = {
     storage,
     transforms: [
         encryptTransform({
-            secretKey: 'BOMBOCLAAT',
+            secretKey: 'Secret',
             onError: function (error) {
                 throw new Error(error)
             }
