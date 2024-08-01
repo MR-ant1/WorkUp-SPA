@@ -3,7 +3,7 @@ import { logout } from "../app/Slices/userSlice";
 
 const root = "http://localhost:4001/api/"
 
-export const loginCall = async (user) => {
+export const loginUser = async (user) => {
 
     const clientData = {
       method: "POST",
