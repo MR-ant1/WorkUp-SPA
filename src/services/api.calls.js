@@ -31,3 +31,27 @@ export const loginUser = async (user) => {
       return error;
     }
   };
+
+  export const GetProjects = async () => {
+
+    const clientData = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }
+
+    try {
+        const response = await fetch(`${root}userProject`, clientData)
+
+        const data = await response.json();
+        if (!data.success) {
+            throw new Error(data.message)
+        }
+
+        return data
+
+    } catch (error) {
+        return error
+    }
+}

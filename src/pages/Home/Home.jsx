@@ -1,8 +1,8 @@
 
 import './Home.css'
 import { useNavigate } from 'react-router-dom/dist'
-import { login, userData } from '../../app/Slices/userSlice'
-import { useDispatch, useSelector } from 'react-redux'
+import { login } from '../../app/Slices/userSlice'
+import { useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { validate } from '../../utils/validations'
 import { decodeToken } from 'react-jwt'
@@ -13,17 +13,10 @@ import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 
 export const Home = () => {
+
     const navigate = useNavigate()
 
-    const reduxUser = useSelector(userData)
-
     const dispatch = useDispatch()
-
-    useEffect(() => {
-        if (reduxUser?.tokenData?.token) {
-            navigate('/')
-        }
-    }, [reduxUser?.tokenData?.token])
 
     const [user, setUser] = useState({
         email: "",
@@ -64,7 +57,7 @@ export const Home = () => {
         try {
             const fetched = await loginUser(user);
 
-            if (fetched.message === "Usuario logueado correctamente") {
+            if (fetched.message === "user logged succesfully") {
                 toast.success(fetched.message)
             } else toast.error(fetched.message)
 
@@ -78,8 +71,8 @@ export const Home = () => {
                 };
                 setTimeout(() => {
                     dispatch(login({ tokenData: passInfo }))
-                    navigate("/")
-                }, 1500)
+                    navigate("/welcome")
+                }, 1000)
             }
 
         } catch (error) {
