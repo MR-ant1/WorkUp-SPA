@@ -5,11 +5,12 @@ import { login, userData } from '../../app/Slices/userSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { validate } from '../../utils/validations'
-import { toast, ToastContainer } from 'react-toastify'
 import { decodeToken } from 'react-jwt'
 import { loginUser } from '../../services/api.calls'
 import { LoginInput } from '../../common/LoginInput/LoginInput.jsx'
 import { LoginButton } from '../../common/LoginButton/LoginButton.jsx'
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 export const Home = () => {
     const navigate = useNavigate()
@@ -87,7 +88,7 @@ export const Home = () => {
     }
 
     return (
-        <div className='container'>
+        <div className='loginContainer'>
             <div className='formContainer'>
                <LoginInput
                      className={`inputDesign ${userError.emailError !== "" ? "inputDesignError" : ""
@@ -101,8 +102,7 @@ export const Home = () => {
                />
 
                 <LoginInput
-                        className={`inputDesign ${userError.passwordError !== "" ? "inputDesignError" : ""
-                            }`}
+                        className={`inputDesign ${userError.passwordError !== "" ? "inputDesignError" : ""}`}
                         type={"password"}
                         placeholder={"password"}
                         name={"password"}
@@ -117,9 +117,8 @@ export const Home = () => {
                         emitFunction={loginFunction}
                     />
             </div>
-
             <ToastContainer
-                position="top-right"
+                position="top-left"
                 autoClose={500}
                 hideProgressBar={false}
                 newestOnTop={false}
@@ -130,7 +129,6 @@ export const Home = () => {
                 pauseOnHover
                 theme="dark"
             />
-
         </div>
     )
 }

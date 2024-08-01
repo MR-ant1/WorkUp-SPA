@@ -1,7 +1,7 @@
 
 import { logout } from "../app/Slices/userSlice";
 
-const root = "http://localhost:4001/api/"
+const root = "http://localhost:8000/api/"
 
 export const loginUser = async (user) => {
 
